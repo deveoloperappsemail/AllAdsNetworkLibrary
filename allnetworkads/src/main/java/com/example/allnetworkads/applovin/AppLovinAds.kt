@@ -285,6 +285,12 @@ class AppLovinAds {
         fun loadInterstitialAd(context: Context, activity: Activity) {
             //val adId = SharedPrefUtils.getStringData(context, Constants.APPLOVIN_INTER)
 
+
+            var isReady = interstitialAd.isReady
+            if (isReady) {
+                return
+            }
+
             var interID: String? = ""
             try {
                 interID = SharedPrefUtils.getStringData(context, Constants.APPLOVIN_INTER)

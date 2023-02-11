@@ -138,6 +138,9 @@ public class AdmobAds {
     }
 
     public static void loadAdmobInters(Context context) {
+        if(mInterstitial != null){
+            return;
+        }
         try {
             String interID = "no";
             try {
@@ -167,7 +170,7 @@ public class AdmobAds {
                             Log.d("TAG", loadAdError.getMessage());
                             mInterstitial = null;
 
-                           // loadAdmobInters(context);
+                            loadAdmobInters(context);
                         }
                     });
         } catch (Exception e) {
@@ -177,6 +180,7 @@ public class AdmobAds {
 
     public static void adOnBack(Context context, Activity activity, String appName,
                                 String packageName){
+
         if (AdsCounter.isShowAd(context)) {
 
             //JUST FOR TESTING PURPOSE
@@ -190,6 +194,7 @@ public class AdmobAds {
                         // Called when fullscreen content is dismissed.
                         Log.d("TAG", "The ad was dismissed.");
                         activity.finish();
+                        mInterstitial = null;
                         loadAdmobInters(context);
                     }
 
@@ -236,6 +241,7 @@ public class AdmobAds {
                         if(isFinish) {
                             fromActivity.finish();
                         }
+                        mInterstitial = null;
                         loadAdmobInters(fromActivity);
                     }
 
@@ -278,6 +284,7 @@ public class AdmobAds {
                     @Override
                     public void onAdDismissedFullScreenContent() {
                         Log.d("TAG", "The ad was dismissed.");
+                        mInterstitial = null;
                         loadAdmobInters(fromActivity);
                     }
 
@@ -323,6 +330,7 @@ public class AdmobAds {
                         super.onAdDismissedFullScreenContent();
                         Navigation.findNavController(view).popBackStack(fragmentId, backStack);
                         Navigation.findNavController(view).navigate(fragmentId, bundle);
+                        mInterstitial = null;
                         loadAdmobInters(context);
                     }
 
@@ -371,7 +379,7 @@ public class AdmobAds {
 
                         // Commit the transaction
                         fragmentTransaction.commit();
-
+                        mInterstitial = null;
                         loadAdmobInters(context);
                     }
 
