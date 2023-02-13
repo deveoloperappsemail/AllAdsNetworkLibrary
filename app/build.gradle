@@ -10,8 +10,8 @@ android {
         applicationId "com.example.adnetworkdemo"
         minSdk 21
         targetSdk 33
-        versionCode 19
-        versionName "1.9.4"
+        versionCode 22
+        versionName "2.2.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
