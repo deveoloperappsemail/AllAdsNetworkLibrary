@@ -210,6 +210,7 @@ public class AdmobAds {
                         // Make sure to set your reference to null so you don't
                         // show it a second time.
                         mInterstitial = null;
+                        loadAdmobInters(context);
                         Log.d("TAG", "The ad was shown.");
                     }
                 });
@@ -253,6 +254,7 @@ public class AdmobAds {
                     @Override
                     public void onAdShowedFullScreenContent() {
                         mInterstitial = null;
+                        loadAdmobInters(context);
                         Log.d("TAG", "The ad was shown.");
                     }
                 });
@@ -296,6 +298,7 @@ public class AdmobAds {
                     @Override
                     public void onAdShowedFullScreenContent() {
                         mInterstitial = null;
+                        loadAdmobInters(context);
                         Log.d("TAG", "The ad was shown.");
                     }
                 });

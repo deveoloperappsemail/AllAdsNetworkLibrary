@@ -1,5 +1,6 @@
 package com.example.allnetworkads.adslib;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -10,7 +11,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.allnetworkads.R;
+import com.example.allnetworkads.admob.AdmobAds;
 import com.example.allnetworkads.admob.ENUMS;
+import com.example.allnetworkads.applovin.AppLovinAds;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -102,6 +105,7 @@ public class TestAds {
                             SharedPrefUtils.saveData(context, Constants.OPEN_AD, jsonObject.getString("openad"));
                             SharedPrefUtils.saveData(context, Constants.AD_COUNTER, jsonObject.getString("intercounter"));
                         }
+                        AdmobAds.loadAdmobInters(context);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -122,7 +126,7 @@ public class TestAds {
     private static void fetchApplovin(Context context, String packageName) {
         RequestQueue queue = Volley.newRequestQueue(context); // this = context
         StringRequest postRequest = new StringRequest(Request.Method.POST,
-                context.getString(R.string.ads_lib_base_url) + "fetchidsbypackage.php",
+                context.getString(R.string.ads_lib_base_url) + "fetch_applovin_test_ads.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -134,14 +138,20 @@ public class TestAds {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 SharedPrefUtils.saveData(context, Constants.APPLOVIN_INTER,
-                                        jsonObject.getString("applovinInter"));
+                                        jsonObject.getString("inter"));
                                 SharedPrefUtils.saveData(context, Constants.APPLOVIN_NATIVE,
-                                        jsonObject.getString("applovinNative"));
+                                        jsonObject.getString("native"));
                                 SharedPrefUtils.saveData(context, Constants.APPLOVIN_BANNER,
-                                        jsonObject.getString("applovinBanner"));
+                                        jsonObject.getString("banner"));
+                               /* SharedPrefUtils.saveData(context, Constants.AD_COUNTER,
+                                        jsonObject.getString("intercounter"));*/
+
                                 SharedPrefUtils.saveData(context, Constants.AD_COUNTER,
-                                        jsonObject.getString("intercounter"));
+                                      "0");
+
+
                             }
+                            AppLovinAds.Companion.loadInterstitialAd(context, (Activity) context);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

@@ -282,13 +282,37 @@ class AppLovinAds {
             return layout
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         fun loadInterstitialAd(context: Context, activity: Activity) {
             //val adId = SharedPrefUtils.getStringData(context, Constants.APPLOVIN_INTER)
 
 
-            var isReady = interstitialAd.isReady
-            if (isReady) {
-                return
+            try {
+                var isReady = interstitialAd.isReady
+                if (isReady) {
+                    return
+                }
+            } catch (e: Exception) {
             }
 
             var interID: String? = ""
@@ -323,7 +347,8 @@ class AppLovinAds {
 
                     override fun onAdHidden(ad: MaxAd?) {
                         // Interstitial ad is hidden. Pre-load the next ad
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
                         context.startActivity(intent)
                         if (isFinish) {
                             activity.finish()
@@ -343,12 +368,16 @@ class AppLovinAds {
                             ).toLong()
                         )
 
-                        Handler().postDelayed({ interstitialAd.loadAd() }, delayMillis)
+                        Handler().postDelayed({
+                            loadInterstitialAd(context, activity)
+
+                        }, delayMillis)
                     }
 
                     override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
-                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                     }
                 })
 
@@ -393,7 +422,9 @@ class AppLovinAds {
 
                     override fun onAdHidden(ad: MaxAd?) {
                         // Interstitial ad is hidden. Pre-load the next ad
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                     }
 
                     override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
@@ -409,12 +440,18 @@ class AppLovinAds {
                             ).toLong()
                         )
 
-                        Handler().postDelayed({ interstitialAd.loadAd() }, delayMillis)
+                        Handler().postDelayed({
+                            loadInterstitialAd(context, activity)
+
+//                            interstitialAd.loadAd()
+                                              }, delayMillis)
                     }
 
                     override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                     }
                 })
 
@@ -441,7 +478,9 @@ class AppLovinAds {
 
                     override fun onAdHidden(ad: MaxAd?) {
                         // Interstitial ad is hidden. Pre-load the next ad
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                         activity.finish()
                     }
 
@@ -458,12 +497,18 @@ class AppLovinAds {
                             ).toLong()
                         )
 
-                        Handler().postDelayed({ interstitialAd.loadAd() }, delayMillis)
+                        Handler().postDelayed({
+//                            interstitialAd.loadAd()
+                            loadInterstitialAd(context, activity)
+
+                        }, delayMillis)
                     }
 
                     override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                     }
                 })
 
@@ -495,7 +540,9 @@ class AppLovinAds {
 
                     override fun onAdHidden(ad: MaxAd?) {
                         // Interstitial ad is hidden. Pre-load the next ad
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                         Navigation.findNavController(view).popBackStack(fragmentId, backStack)
                         Navigation.findNavController(view).navigate(fragmentId, bundle)
                     }
@@ -513,12 +560,18 @@ class AppLovinAds {
                             ).toLong()
                         )
 
-                        Handler().postDelayed({ interstitialAd.loadAd() }, delayMillis)
+                        Handler().postDelayed({
+
+                            loadInterstitialAd(context, activity)
+//                            interstitialAd.loadAd()
+                                              }, delayMillis)
                     }
 
                     override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                     }
                 })
 
@@ -553,8 +606,9 @@ class AppLovinAds {
 
                     override fun onAdHidden(ad: MaxAd?) {
                         // Interstitial ad is hidden. Pre-load the next ad
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
                         // Commit the transaction
+                        loadInterstitialAd(context, activity)
 
                         // Commit the transaction
                         fragmentTransaction.commit()
@@ -573,12 +627,19 @@ class AppLovinAds {
                             ).toLong()
                         )
 
-                        Handler().postDelayed({ interstitialAd.loadAd() }, delayMillis)
+                        Handler().postDelayed({
+                            loadInterstitialAd(context, activity)
+
+//                            interstitialAd.loadAd()
+
+                                              }, delayMillis)
                     }
 
                     override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
-                        interstitialAd.loadAd()
+//                        interstitialAd.loadAd()
+                        loadInterstitialAd(context, activity)
+
                     }
                 })
 

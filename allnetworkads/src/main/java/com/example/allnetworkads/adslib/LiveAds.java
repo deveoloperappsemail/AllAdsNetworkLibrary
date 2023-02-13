@@ -1,5 +1,6 @@
 package com.example.allnetworkads.adslib;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -10,6 +11,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.allnetworkads.R;
+import com.example.allnetworkads.admob.AdmobAds;
+import com.example.allnetworkads.applovin.AppLovinAds;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -98,6 +101,17 @@ public class LiveAds {
                                 SharedPrefUtils.saveData(context, Constants.AD_COUNTER, jsonObject.getString("intercounter"));
                                 SharedPrefUtils.saveData(context, Constants.SHOW_ADMOB, jsonObject.getBoolean("showAdmob"));
                             }
+                            try {
+                                boolean showAdmob = SharedPrefUtils.getBooleanData(context, Constants.SHOW_ADMOB);
+                                if(showAdmob) {
+                                    AdmobAds.loadAdmobInters(context);
+                                }else {
+                                    AppLovinAds.Companion.loadInterstitialAd(context, (Activity) context);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

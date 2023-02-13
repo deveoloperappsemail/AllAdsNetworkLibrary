@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         //Example of library usage
 
         val button = findViewById<Button>(R.id.button)
+        val btnload = findViewById<Button>(R.id.btnload)
         //val adFrame = findViewById<FrameLayout>(R.id.native_ad_layout)
 
         val text = findViewById<TextView>(R.id.title_text_view)
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         /*to show admob ads save true
         to show applovin ads save false*/
-        TestAds.getTestAds(this, ENUMS.ADMOB, packageName)
+        TestAds.getTestAds(this, ENUMS.APPLOVIN, packageName)
 
         //LiveAds.getLiveAds(this, packageName)
 
@@ -34,11 +35,15 @@ class MainActivity : AppCompatActivity() {
         Ads.loadNative(this, this, null, getString(R.string.ads_lib_app_name), packageName,
                ENUMS.LARGE_ADS, ENUMS.WHITE, false)
 
-        Ads.loadInter(this, this)
+
 
         button.setOnClickListener {
             val intent = Intent(this, NextActivity::class.java)
             Ads.showInter(this, this, intent, false)
+        }
+
+        btnload.setOnClickListener {
+            Ads.loadInter(this, this)
         }
 
         Ads.showActivityBanner(this, this)
