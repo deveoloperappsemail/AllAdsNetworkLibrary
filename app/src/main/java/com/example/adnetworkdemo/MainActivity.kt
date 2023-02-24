@@ -9,8 +9,9 @@ import com.example.allnetworkads.Ads
 import com.example.allnetworkads.admob.ENUMS
 import com.example.allnetworkads.adslib.InHouseAds
 import com.example.allnetworkads.adslib.TestAds
+import com.example.allnetworkads.applovin.AppLovinAds
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.button)
         val btnload = findViewById<Button>(R.id.btnload)
+        val btnNativeload = findViewById<Button>(R.id.btnNativeload)
         //val adFrame = findViewById<FrameLayout>(R.id.native_ad_layout)
 
         val text = findViewById<TextView>(R.id.title_text_view)
@@ -30,10 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         //LiveAds.getLiveAds(this, packageName)
 
-        InHouseAds.getInHouseAds(this, "updatesoftware.checker.online.finder.update")
-
-        Ads.loadNative(this, this, null, getString(R.string.ads_lib_app_name), packageName,
-               ENUMS.LARGE_ADS, ENUMS.WHITE, false)
+//        InHouseAds.getInHouseAds(this, "updatesoftware.checker.online.finder.update")
 
 
 
@@ -44,6 +43,13 @@ class MainActivity : AppCompatActivity() {
 
         btnload.setOnClickListener {
             Ads.loadInter(this, this)
+        }
+
+        btnNativeload.setOnClickListener {
+
+            Ads.loadNative(this, this, null, getString(R.string.ads_lib_app_name), packageName,
+                ENUMS.LARGE_ADS, ENUMS.WHITE, false)
+
         }
 
         Ads.showActivityBanner(this, this)
@@ -68,5 +74,7 @@ class MainActivity : AppCompatActivity() {
             }
         }, iFramePlayerOptions)
     }*/
+
+
 
 }

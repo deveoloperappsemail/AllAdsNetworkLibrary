@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="8dp"
-    android:background="#333942"
+    android:background="#888888"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -97,7 +97,7 @@
 
     <Button
         android:id="@+id/cta_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/applovin_sdk_brand_color"
         android:textColor="@android:color/white"

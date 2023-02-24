@@ -35,8 +35,11 @@ public class TestAds {
             else if(showAdmob == ENUMS.APPLOVIN){
                 fetchApplovin(context, packageName);
                 SharedPrefUtils.saveData(context, Constants.SHOW_ADMOB, false);
+
             }
         }
+
+
 
         InHouseAds.getInHouseAds(context, packageName);
     }
@@ -78,6 +81,10 @@ public class TestAds {
         String applovinBanner = SharedPrefUtils.getStringData(context, Constants.APPLOVIN_BANNER);
         if (applovinBanner == null) {
             SharedPrefUtils.saveData(context, Constants.APPLOVIN_BANNER, "no");
+        }
+        String applovinOpenAd = SharedPrefUtils.getStringData(context, Constants.APPLOVIN_OPENAD);
+        if (applovinOpenAd == null) {
+            SharedPrefUtils.saveData(context, Constants.APPLOVIN_OPENAD, "no");
         }
 
         String adCounter = SharedPrefUtils.getStringData(context, Constants.AD_COUNTER);
@@ -143,6 +150,8 @@ public class TestAds {
                                         jsonObject.getString("native"));
                                 SharedPrefUtils.saveData(context, Constants.APPLOVIN_BANNER,
                                         jsonObject.getString("banner"));
+                                SharedPrefUtils.saveData(context, Constants.APPLOVIN_OPENAD,
+                                        jsonObject.getString("openad"));
                                /* SharedPrefUtils.saveData(context, Constants.AD_COUNTER,
                                         jsonObject.getString("intercounter"));*/
 
@@ -152,6 +161,7 @@ public class TestAds {
 
                             }
                             AppLovinAds.Companion.loadInterstitialAd(context, (Activity) context);
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

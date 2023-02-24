@@ -6,7 +6,7 @@ import com.example.allnetworkads.Ads
 import com.example.allnetworkads.admob.ENUMS
 import com.example.allnetworkads.adslib.TestAds
 
-class NextActivity : AppCompatActivity() {
+class NextActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_next)

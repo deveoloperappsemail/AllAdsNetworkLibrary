@@ -7,12 +7,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.example.allnetworkads.admob.AppOpenAdManager;
+import com.example.allnetworkads.adslib.Constants;
+import com.example.allnetworkads.adslib.SharedPrefUtils;
+import com.example.allnetworkads.applovin.AppLovinAds;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -25,7 +30,6 @@ public class MyApplication extends Application
 
     private AppOpenAdManager appOpenAdManager;
     private Activity currentActivity;
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -39,15 +43,45 @@ public class MyApplication extends Application
                             @NonNull InitializationStatus initializationStatus) {}
                 });
 
-        ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-        appOpenAdManager = new AppOpenAdManager();
+
+//        boolean showAdmob = SharedPrefUtils.getBooleanData(this, Constants.SHOW_ADMOB);
+//        if(showAdmob) {
+            ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
+            appOpenAdManager = new AppOpenAdManager();
+//
+//        }else {
+//            ProcessLifecycleOwner.get().getLifecycle().addObserver(new MyLifecycleObserver(this));
+//        }
+
     }
 
+/*
+
+    class MyLifecycleObserver implements DefaultLifecycleObserver {
+        MyApplication myApplication;
+        public MyLifecycleObserver(MyApplication myApplicationx) {
+            myApplication = myApplicationx;
+        }
+
+        @Override
+        public void onCreate(@NonNull LifecycleOwner owner) {
+            AppLovinAds.loadOpenAd(myApplication);
+        }
+
+        @Override
+        public void onResume(@NonNull LifecycleOwner owner) {
+//            DefaultLifecycleObserver.super.onResume(owner);
+            AppLovinAds.showOpenAd();
+        }
+    }*/
     /** LifecycleObserver method that shows the app open ad when the app moves to foreground. */
     @OnLifecycleEvent(Event.ON_START)
     protected void onMoveToForeground() {
         // Show the ad (if available) when the app moves to foreground.
         appOpenAdManager.showAdIfAvailable(currentActivity);
+
+        //ignore
+
     }
 
     /** ActivityLifecycleCallback methods. */

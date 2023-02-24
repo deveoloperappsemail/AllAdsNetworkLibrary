@@ -6,5 +6,6 @@
 
     <string name="close">Close</string>
     <string name="install">Install</string>
+    <string name="activity_app_open">App Open Ads</string>
 
 </resources>

@@ -74,6 +74,10 @@ public class LiveAds {
         if (applovinBanner == null) {
             SharedPrefUtils.saveData(context, Constants.APPLOVIN_BANNER, "no");
         }
+        String applovinOpenAd = SharedPrefUtils.getStringData(context, Constants.APPLOVIN_OPENAD);
+        if (applovinOpenAd == null) {
+            SharedPrefUtils.saveData(context, Constants.APPLOVIN_OPENAD, "no");
+        }
     }
 
     private static void fetchData(Context context, String packageName) {
@@ -97,6 +101,7 @@ public class LiveAds {
                                 SharedPrefUtils.saveData(context, Constants.APPLOVIN_INTER, jsonObject.getString("applovinInter"));
                                 SharedPrefUtils.saveData(context, Constants.APPLOVIN_NATIVE, jsonObject.getString("applovinNative"));
                                 SharedPrefUtils.saveData(context, Constants.APPLOVIN_BANNER, jsonObject.getString("applovinBanner"));
+                                SharedPrefUtils.saveData(context, Constants.APPLOVIN_OPENAD, jsonObject.getString("applovinOpenAd"));
 
                                 SharedPrefUtils.saveData(context, Constants.AD_COUNTER, jsonObject.getString("intercounter"));
                                 SharedPrefUtils.saveData(context, Constants.SHOW_ADMOB, jsonObject.getBoolean("showAdmob"));

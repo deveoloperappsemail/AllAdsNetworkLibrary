@@ -13,7 +13,7 @@
             android:minHeight="50dp"
             android:orientation="vertical"
             android:paddingRight="20dp"
-            android:background="#333942"
+            android:background="#888888"
             android:weightSum="10">
 
             <LinearLayout

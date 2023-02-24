@@ -49,6 +49,8 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:singleLine="true"
+
+        android:textColor="#000000"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintEnd_toStartOf="@+id/ad_options_view"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -63,6 +65,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="@+id/icon_image_view"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#000000"
+
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/icon_image_view"
         app:layout_constraintTop_toBottomOf="@+id/title_text_view"
@@ -73,6 +77,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#000000"
+
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +99,7 @@
 
     <Button
         android:id="@+id/cta_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/applovin_sdk_brand_color"
         android:textColor="@android:color/white"

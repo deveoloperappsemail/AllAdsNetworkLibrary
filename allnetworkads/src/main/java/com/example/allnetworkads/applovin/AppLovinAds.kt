@@ -19,14 +19,15 @@ import com.applovin.mediation.MaxAdListener
 import com.applovin.mediation.MaxAdViewAdListener
 import com.applovin.mediation.MaxError
 import com.applovin.mediation.ads.MaxAdView
+import com.applovin.mediation.ads.MaxAppOpenAd
 import com.applovin.mediation.ads.MaxInterstitialAd
 import com.applovin.mediation.nativeAds.MaxNativeAdListener
 import com.applovin.mediation.nativeAds.MaxNativeAdLoader
 import com.applovin.mediation.nativeAds.MaxNativeAdView
 import com.applovin.mediation.nativeAds.MaxNativeAdViewBinder
 import com.example.allnetworkads.AdsCounter
+import com.example.allnetworkads.MyApplication
 import com.example.allnetworkads.R
-import com.example.allnetworkads.admob.AdmobAds
 import com.example.allnetworkads.admob.ENUMS
 import com.example.allnetworkads.adslib.*
 import com.google.android.material.card.MaterialCardView
@@ -37,7 +38,7 @@ class AppLovinAds {
     companion object {
         private lateinit var interstitialAd: MaxInterstitialAd
         private var retryAttempt = 0.0
-
+        lateinit var appOpenAdLovin: MaxAppOpenAd
         private lateinit var nativeAdLoader: MaxNativeAdLoader
         private var nativeAd: MaxAd? = null
 
@@ -47,6 +48,8 @@ class AppLovinAds {
 
             showBanner(context, adArea, adFrame)
         }
+
+
 
         fun showFragmentBanner(context: Context, view: View) {
             val adArea: MaterialCardView = view.findViewById(R.id.ad_area)
@@ -188,6 +191,90 @@ class AppLovinAds {
             nativeAdLoader.loadAd(nativeAdView)
         }
 
+
+
+        @JvmStatic
+        fun loadOpenAd(myApplication: Activity) {
+            var adId = ""
+            try {
+                adId = SharedPrefUtils.getStringData(myApplication, Constants.APPLOVIN_OPENAD)
+                if (adId == null) {
+                    adId = ""
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                adId = ""
+            }
+//            "0a7009a3261ea3c4"
+            try {
+                appOpenAdLovin = MaxAppOpenAd(adId, myApplication)
+                appOpenAdLovin.loadAd()
+            } catch (e: Exception) {
+            }
+        }
+
+
+        @JvmStatic
+        fun showOpenAd(activity: Activity) {
+
+            Log.i("MyLog", "Show ad")
+            appOpenAdLovin.setListener(object : MaxAdListener {
+                override fun onAdLoaded(ad: MaxAd?) {
+                    // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
+                    // Reset retry attempt
+                    retryAttempt = 0.0
+                }
+
+                override fun onAdDisplayed(ad: MaxAd?) {}
+                override fun onAdClicked(ad: MaxAd?) {}
+
+                override fun onAdHidden(ad: MaxAd?) {
+                    loadOpenAd( activity)
+                }
+
+                override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                    retryAttempt++
+                    val delayMillis = TimeUnit.SECONDS.toMillis(
+                        2.0.pow(
+                            6.0.coerceAtMost(
+                                retryAttempt
+                            )
+                        ).toLong()
+                    )
+
+                    Handler().postDelayed({
+                        loadOpenAd( activity)
+
+                    }, delayMillis)
+                }
+
+                override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+                    // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
+                    loadOpenAd( activity)
+
+                }
+            })
+            try {
+                if (appOpenAdLovin.isReady) {
+                    appOpenAdLovin.showAd()
+                }
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+
+        }
+
+        fun ifOpenAdAvailable() : Boolean {
+            try {
+                return appOpenAdLovin.isReady
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+            return false
+        }
+
+
+
         fun loadFragmentNativeAd(context: Context, view: View, appName: String, pkgName: String,
                          isSmallAd: Int, nativeThemeColor: Int) {
             val nativeAdLayout = view.findViewById<FrameLayout>(R.id.fl_adplaceholder)
@@ -207,8 +294,6 @@ class AppLovinAds {
                 .setCallToActionButtonId(R.id.cta_button)
                 .build()
             val nativeAdView = MaxNativeAdView(binder, context)
-
-            //val adId = SharedPrefUtils.getStringData(context, Constants.APPLOVIN_NATIVE)
 
             var adId: String? = ""
             try {
@@ -272,7 +357,8 @@ class AppLovinAds {
                 } else if (isSmallAd == ENUMS.LARGE_ADS) {
                     layout = R.layout.applovin_native_custom_black_layout
                 }
-            } else if (nativeThemeColor == ENUMS.WHITE) {
+            }else{
+//            } else if (nativeThemeColor == ENUMS.WHITE) {
                 if (isSmallAd == ENUMS.SMALL_ADS) {
                     layout = R.layout.applovin_native_custom_white_small
                 } else if (isSmallAd == ENUMS.LARGE_ADS) {
@@ -658,5 +744,9 @@ class AppLovinAds {
                 fragmentTransaction.commit()
             }
         }
+
+
+
+
     }
 }

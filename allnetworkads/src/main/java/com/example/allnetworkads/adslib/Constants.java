@@ -10,6 +10,7 @@ public class Constants {
     public static final String APPLOVIN_INTER = "applovin_inter";
     public static final String APPLOVIN_NATIVE = "applovin_native";
     public static final String APPLOVIN_BANNER = "applovin_banner";
+    public static final String APPLOVIN_OPENAD = "applovin_openad";
 
     public static final String AD_COUNTER = "adCounter";
     public static final String SHOW_ADMOB = "showAdmobAds";
