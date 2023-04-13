@@ -405,6 +405,56 @@ public class AdmobAds {
         }
     }
 
+
+
+    public static void redirectFragmentWithCommitStateLoss(Context context, Activity activtiy, String appName, String packageName,
+                                                  FragmentTransaction fragmentTransaction){
+        if (AdsCounter.isShowAd(context)) {
+            if (mInterstitial != null) {
+                mInterstitial.show(activtiy);
+                mInterstitial.setFullScreenContentCallback(new FullScreenContentCallback() {
+                    @Override
+                    public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                        super.onAdFailedToShowFullScreenContent(adError);
+                    }
+
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        super.onAdShowedFullScreenContent();
+                    }
+
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        super.onAdDismissedFullScreenContent();
+
+                        // Commit the transaction
+                        fragmentTransaction.commitAllowingStateLoss();
+                        mInterstitial = null;
+                        loadAdmobInters(context);
+                    }
+
+                    @Override
+                    public void onAdImpression() {
+                        super.onAdImpression();
+                    }
+
+                    @Override
+                    public void onAdClicked() {
+                        super.onAdClicked();
+                    }
+                });
+            } else {
+                // Commit the transaction
+                // fragmentTransaction.commit();
+                InHouseInterAds.Companion.commitFragmentInHouseInterAd(context, activtiy, appName,
+                        packageName, fragmentTransaction);
+            }
+        } else {
+            // Commit the transaction
+            fragmentTransaction.commitAllowingStateLoss();
+        }
+    }
+
     /**
      * Creates a request for a new native ad based on the boolean parameters and calls the
      * corresponding "populate" method when one is successfully returned.

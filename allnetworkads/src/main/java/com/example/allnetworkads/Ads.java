@@ -113,6 +113,20 @@ public class Ads {
             AppLovinAds.Companion.redirectFragmentWithCommit(context, activity, appName, packageName, fragmentTransaction);
         }
     }
+    public static void showFragmentInterWithCommitStateloss(Context context, Activity activity,
+                                                   FragmentTransaction fragmentTransaction) {
+        boolean showAdmob = SharedPrefUtils.getBooleanData(context, Constants.SHOW_ADMOB);
+
+        String packageName = activity.getPackageName();
+        String appName = activity.getApplicationInfo().loadLabel(activity.getPackageManager()).toString();
+
+        if(showAdmob) {
+            AdmobAds.redirectFragmentWithCommitStateLoss(context, activity, appName, packageName, fragmentTransaction);
+        }
+        else {
+            AppLovinAds.Companion.redirectFragmentWithCommit(context, activity, appName, packageName, fragmentTransaction);
+        }
+    }
 
     public static void showFragmentInterWithNavController(Context context, Activity activity,
                                                           int fragmentId, View view,
