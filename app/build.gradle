@@ -10,8 +10,8 @@ android {
         applicationId "com.example.adnetworkdemo"
         minSdk 21
         targetSdk 33
-        versionCode 33
-        versionName "3.3"
+        versionCode 40
+        versionName "4.0" // shehzeen
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

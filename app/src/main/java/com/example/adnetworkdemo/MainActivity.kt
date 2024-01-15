@@ -28,7 +28,7 @@ class MainActivity : BaseActivity() {
 
         /*to show admob ads save true
         to show applovin ads save false*/
-        TestAds.getTestAds(this, ENUMS.APPLOVIN, packageName)
+        TestAds.getTestAds(this, ENUMS.ADMOB, packageName)
 
         //LiveAds.getLiveAds(this, packageName)
 
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity() {
         btnNativeload.setOnClickListener {
 
             Ads.loadNative(this, this, null, getString(R.string.ads_lib_app_name), packageName,
-                ENUMS.LARGE_ADS, ENUMS.WHITE, false)
+                ENUMS.SMALL_ADS, ENUMS.WHITE, false)
 
         }
 

@@ -29,6 +29,7 @@
                     android:textColor="#ffffff"
                     android:textSize="12sp"
                     android:padding="2dp"
+                    android:layout_marginLeft="@dimen/_5sdp"
                     android:background="#FFCC66"
                     android:layout_marginRight="3dp"
                     android:text="ad"
@@ -40,7 +41,9 @@
                     android:adjustViewBounds="true"
                     android:paddingEnd="5dp"
                     android:paddingRight="5dp"
-                    android:paddingBottom="5dp" />
+                    android:paddingBottom="5dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
