@@ -72,23 +72,23 @@ class AppLovinAds {
 
             val adView = MaxAdView(adId, context)
             adView.setListener(object: MaxAdViewAdListener {
-                override fun onAdLoaded(ad: MaxAd?) {
+                override fun onAdLoaded(p0: MaxAd) {
                     Log.i("MyLog", "Applovin banner ad loaded")
                     adArea.visibility = View.GONE
                     adFrame.visibility = View.VISIBLE
                 }
-                override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                override fun onAdLoadFailed(p0: String, p1: MaxError) {
                     Log.i("MyLog", "Applovin banner ad failed")
                     adArea.visibility = View.VISIBLE
                     adFrame.visibility = View.GONE
                 }
 
-                override fun onAdDisplayed(ad: MaxAd?) {}
-                override fun onAdHidden(ad: MaxAd?) {}
-                override fun onAdClicked(ad: MaxAd?) {}
-                override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {}
-                override fun onAdExpanded(ad: MaxAd?) {}
-                override fun onAdCollapsed(ad: MaxAd?) {}
+                override fun onAdDisplayed(p0: MaxAd) {}
+                override fun onAdHidden(p0: MaxAd) {}
+                override fun onAdClicked(p0: MaxAd) {}
+                override fun onAdDisplayFailed(p0: MaxAd, p1: MaxError) {}
+                override fun onAdExpanded(p0: MaxAd) {}
+                override fun onAdCollapsed(p0: MaxAd) {}
             })
 
             // Stretch to the width of the screen for banners to be fully functional
@@ -219,20 +219,20 @@ class AppLovinAds {
 
             Log.i("MyLog", "Show ad")
             appOpenAdLovin.setListener(object : MaxAdListener {
-                override fun onAdLoaded(ad: MaxAd?) {
+                override fun onAdLoaded(p0: MaxAd) {
                     // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
                     // Reset retry attempt
                     retryAttempt = 0.0
                 }
 
-                override fun onAdDisplayed(ad: MaxAd?) {}
-                override fun onAdClicked(ad: MaxAd?) {}
+                override fun onAdDisplayed(p0: MaxAd) {}
+                override fun onAdClicked(p0: MaxAd) {}
 
-                override fun onAdHidden(ad: MaxAd?) {
+                override fun onAdHidden(p0: MaxAd) {
                     loadOpenAd( activity)
                 }
 
-                override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                override fun onAdLoadFailed(p0: String, p1: MaxError) {
                     retryAttempt++
                     val delayMillis = TimeUnit.SECONDS.toMillis(
                         2.0.pow(
@@ -248,7 +248,7 @@ class AppLovinAds {
                     }, delayMillis)
                 }
 
-                override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+                override fun onAdDisplayFailed(p0: MaxAd, p1: MaxError) {
                     // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
                     loadOpenAd( activity)
 
@@ -422,16 +422,16 @@ class AppLovinAds {
             if (AdsCounter.isShowAd(context)) {
                 Log.i("MyLog", "Show ad")
                 interstitialAd.setListener(object : MaxAdListener {
-                    override fun onAdLoaded(ad: MaxAd?) {
+                    override fun onAdLoaded(p0: MaxAd) {
                         // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
                         // Reset retry attempt
                         retryAttempt = 0.0
                     }
 
-                    override fun onAdDisplayed(ad: MaxAd?) {}
-                    override fun onAdClicked(ad: MaxAd?) {}
+                    override fun onAdDisplayed(p0: MaxAd) {}
+                    override fun onAdClicked(p0: MaxAd) {}
 
-                    override fun onAdHidden(ad: MaxAd?) {
+                    override fun onAdHidden(p0: MaxAd) {
                         // Interstitial ad is hidden. Pre-load the next ad
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
@@ -441,7 +441,7 @@ class AppLovinAds {
                         }
                     }
 
-                    override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                    override fun onAdLoadFailed(p0: String, p1: MaxError) {
                         // Interstitial ad failed to load
                         // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
 
@@ -460,7 +460,7 @@ class AppLovinAds {
                         }, delayMillis)
                     }
 
-                    override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+                    override fun onAdDisplayFailed(p0: MaxAd, p1: MaxError) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
                         loadInterstitialAd(context, activity)
 
@@ -497,23 +497,23 @@ class AppLovinAds {
         fun showInter(context: Context, activity: Activity, appName: String, packageName: String) {
             if (AdsCounter.isShowAd(context)) {
                 interstitialAd.setListener(object : MaxAdListener {
-                    override fun onAdLoaded(ad: MaxAd?) {
+                    override fun onAdLoaded(p0: MaxAd) {
                         // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
                         // Reset retry attempt
                         retryAttempt = 0.0
                     }
 
-                    override fun onAdDisplayed(ad: MaxAd?) {}
-                    override fun onAdClicked(ad: MaxAd?) {}
+                    override fun onAdDisplayed(p0: MaxAd) {}
+                    override fun onAdClicked(p0: MaxAd) {}
 
-                    override fun onAdHidden(ad: MaxAd?) {
+                    override fun onAdHidden(p0: MaxAd) {
                         // Interstitial ad is hidden. Pre-load the next ad
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
 
                     }
 
-                    override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                    override fun onAdLoadFailed(p0: String, p1: MaxError) {
                         // Interstitial ad failed to load
                         // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
 
@@ -533,7 +533,7 @@ class AppLovinAds {
                                               }, delayMillis)
                     }
 
-                    override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+                    override fun onAdDisplayFailed(p0: MaxAd, p1: MaxError) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
@@ -553,16 +553,16 @@ class AppLovinAds {
         fun adOnBack(context: Context, activity: Activity, appName: String, packageName: String) {
             if (AdsCounter.isShowAd(context)) {
                 interstitialAd.setListener(object : MaxAdListener {
-                    override fun onAdLoaded(ad: MaxAd?) {
+                    override fun onAdLoaded(p0: MaxAd) {
                         // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
                         // Reset retry attempt
                         retryAttempt = 0.0
                     }
 
-                    override fun onAdDisplayed(ad: MaxAd?) {}
-                    override fun onAdClicked(ad: MaxAd?) {}
+                    override fun onAdDisplayed(p0: MaxAd) {}
+                    override fun onAdClicked(p0: MaxAd) {}
 
-                    override fun onAdHidden(ad: MaxAd?) {
+                    override fun onAdHidden(p0: MaxAd) {
                         // Interstitial ad is hidden. Pre-load the next ad
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
@@ -570,7 +570,7 @@ class AppLovinAds {
                         activity.finish()
                     }
 
-                    override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                    override fun onAdLoadFailed(p0: String, p1: MaxError) {
                         // Interstitial ad failed to load
                         // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
 
@@ -590,7 +590,7 @@ class AppLovinAds {
                         }, delayMillis)
                     }
 
-                    override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+                    override fun onAdDisplayFailed(p0: MaxAd, p1: MaxError) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
@@ -615,16 +615,16 @@ class AppLovinAds {
                                               view:View, bundle: Bundle, backStack: Boolean) {
             if (AdsCounter.isShowAd(context)) {
                 interstitialAd.setListener(object : MaxAdListener {
-                    override fun onAdLoaded(ad: MaxAd?) {
+                    override fun onAdLoaded(p0: MaxAd) {
                         // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
                         // Reset retry attempt
                         retryAttempt = 0.0
                     }
 
-                    override fun onAdDisplayed(ad: MaxAd?) {}
-                    override fun onAdClicked(ad: MaxAd?) {}
+                    override fun onAdDisplayed(p0: MaxAd) {}
+                    override fun onAdClicked(p0: MaxAd) {}
 
-                    override fun onAdHidden(ad: MaxAd?) {
+                    override fun onAdHidden(p0: MaxAd) {
                         // Interstitial ad is hidden. Pre-load the next ad
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
@@ -633,7 +633,7 @@ class AppLovinAds {
                         Navigation.findNavController(view).navigate(fragmentId, bundle)
                     }
 
-                    override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                    override fun onAdLoadFailed(p0: String, p1: MaxError) {
                         // Interstitial ad failed to load
                         // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
 
@@ -653,7 +653,7 @@ class AppLovinAds {
                                               }, delayMillis)
                     }
 
-                    override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+                    override fun onAdDisplayFailed(p0: MaxAd, p1: MaxError) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
@@ -681,16 +681,16 @@ class AppLovinAds {
                                        packageName: String, fragmentTransaction: FragmentTransaction) {
             if (AdsCounter.isShowAd(context)) {
                 interstitialAd.setListener(object : MaxAdListener {
-                    override fun onAdLoaded(ad: MaxAd?) {
+                    override fun onAdLoaded(p0: MaxAd) {
                         // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
                         // Reset retry attempt
                         retryAttempt = 0.0
                     }
 
-                    override fun onAdDisplayed(ad: MaxAd?) {}
-                    override fun onAdClicked(ad: MaxAd?) {}
+                    override fun onAdDisplayed(p0: MaxAd) {}
+                    override fun onAdClicked(p0: MaxAd) {}
 
-                    override fun onAdHidden(ad: MaxAd?) {
+                    override fun onAdHidden(p0: MaxAd) {
                         // Interstitial ad is hidden. Pre-load the next ad
 //                        interstitialAd.loadAd()
                         // Commit the transaction
@@ -700,7 +700,7 @@ class AppLovinAds {
                         fragmentTransaction.commit()
                     }
 
-                    override fun onAdLoadFailed(adUnitId: String?, error: MaxError?) {
+                    override fun onAdLoadFailed(p0: String, p1: MaxError) {
                         // Interstitial ad failed to load
                         // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
 
@@ -721,7 +721,7 @@ class AppLovinAds {
                                               }, delayMillis)
                     }
 
-                    override fun onAdDisplayFailed(ad: MaxAd?, error: MaxError?) {
+                    override fun onAdDisplayFailed(p0: MaxAd, p1: MaxError) {
                         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
 //                        interstitialAd.loadAd()
                         loadInterstitialAd(context, activity)
