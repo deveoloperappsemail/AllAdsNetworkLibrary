@@ -57,4 +57,24 @@ dependencies {
     //liftoff
     implementation 'com.applovin:applovin-sdk:+'
     implementation 'com.applovin.mediation:vungle-adapter:+'
+
+    //    google liftoff
+    implementation 'com.google.ads.mediation:vungle:7.3.2.0'
+
+    //    google applovin
+    implementation 'com.google.ads.mediation:applovin:12.5.0.1'
+
+    //    google meta facebook
+    implementation 'com.google.ads.mediation:facebook:6.17.0.0'
+
+    //    google inmobi
+    implementation 'com.google.ads.mediation:inmobi:10.7.4.0'
+
+    //    google mintegral
+    implementation("com.google.ads.mediation:mintegral:16.7.61.0")
+
+    //    google iron source
+    implementation("com.google.ads.mediation:ironsource:8.1.0.0")
+
+
 }
