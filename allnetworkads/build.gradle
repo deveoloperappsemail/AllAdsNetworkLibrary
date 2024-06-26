@@ -73,11 +73,16 @@ dependencies {
     implementation 'com.google.ads.mediation:inmobi:10.7.4.0'
 
     //    google mintegral
-    implementation("com.google.ads.mediation:mintegral:16.7.61.0")
+//    implementation("com.google.ads.mediation:mintegral:16.7.61.0")
+    implementation("com.google.ads.mediation:mintegral:16.2.61.0")
+
 
 //        google iron source
 //    implementation("com.google.ads.mediation:ironsource:8.1.0.0")
 //    implementation("com.google.ads.mediation:ironsource:7.2.3.1")
+
+    implementation("com.github.HBiSoft:HBRecorder:3.0.3")
+
 
 
 

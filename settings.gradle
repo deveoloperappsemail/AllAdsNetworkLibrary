@@ -3,6 +3,9 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+//        maven {
+//            url = uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
+//        }
 
     }
 }
@@ -11,13 +14,15 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url = uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
-        }
+//        maven {
+//            url = uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
+//        }
+        maven { url 'https://jitpack.io' }
+
 //        maven {
 //            url = uri("https://android-sdk.is.com/")
 //        }
-//        maven { url= "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" }
+        maven { url= "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" }
 //        maven { url= "https://android-sdk.is.com/" }
 
 
