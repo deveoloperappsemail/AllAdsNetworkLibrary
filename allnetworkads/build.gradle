@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,7 +31,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+//    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
+
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.navigation:navigation-runtime:2.5.0'
@@ -73,8 +75,10 @@ dependencies {
     //    google mintegral
     implementation("com.google.ads.mediation:mintegral:16.7.61.0")
 
-    //    google iron source
-    implementation("com.google.ads.mediation:ironsource:8.1.0.0")
+//        google iron source
+//    implementation("com.google.ads.mediation:ironsource:8.1.0.0")
+//    implementation("com.google.ads.mediation:ironsource:7.2.3.1")
+
 
 
 }
