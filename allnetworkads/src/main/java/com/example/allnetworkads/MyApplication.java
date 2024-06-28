@@ -3,7 +3,9 @@ package com.example.allnetworkads;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Build;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +37,10 @@ public class MyApplication extends Application
         super.onCreate();
         this.registerActivityLifecycleCallbacks(this);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            String process = getProcessName();
+            if (getPackageName() != process) WebView.setDataDirectorySuffix(process);
+        }
         MobileAds.initialize(
                 this,
                 new OnInitializationCompleteListener() {
