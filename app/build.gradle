@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    namespace 'com.example.adnetworkdemo'
+
     compileSdk 34
 
     defaultConfig {
