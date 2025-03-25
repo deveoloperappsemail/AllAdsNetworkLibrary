@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+/*
 
 package com.example.allnetworkadslibrary
 
@@ -20,4 +20,4 @@ class MyApp: Application() {
         //AppLovinSdk.getInstance(this).showMediationDebugger()
     }
 
-}
+}*/

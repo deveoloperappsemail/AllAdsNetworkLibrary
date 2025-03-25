@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.allnetworkads.admob.AdmobAds;
 import com.example.allnetworkads.adslib.Constants;
 import com.example.allnetworkads.adslib.SharedPrefUtils;
+import com.example.allnetworkads.applovin.AppLovinAds;
 
 public class Ads {
 
