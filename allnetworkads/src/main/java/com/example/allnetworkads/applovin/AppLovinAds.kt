@@ -26,7 +26,6 @@ import com.applovin.mediation.nativeAds.MaxNativeAdLoader
 import com.applovin.mediation.nativeAds.MaxNativeAdView
 import com.applovin.mediation.nativeAds.MaxNativeAdViewBinder
 import com.example.allnetworkads.AdsCounter
-import com.example.allnetworkads.MyApplication
 import com.example.allnetworkads.R
 import com.example.allnetworkads.admob.ENUMS
 import com.example.allnetworkads.adslib.*
@@ -34,6 +33,7 @@ import com.google.android.material.card.MaterialCardView
 import java.util.concurrent.TimeUnit
 import kotlin.math.pow
 
+@Suppress("DEPRECATION")
 class AppLovinAds {
     companion object {
         private lateinit var interstitialAd: MaxInterstitialAd

@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.allnetworkadslibrary
 
 import android.app.Application

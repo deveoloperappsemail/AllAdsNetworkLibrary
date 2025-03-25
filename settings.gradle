@@ -3,9 +3,9 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven {
+       /* maven {
             url 'https://swisscodemonkeys.github.io/appbrain-sdk/maven'
-        }
+        }*/
 //        maven {
 //            url = uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
 //        }
@@ -17,9 +17,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
+       /* maven {
             url 'https://swisscodemonkeys.github.io/appbrain-sdk/maven'
-        }
+        }*/
 //        maven { url 'https://jitpack.io' }
 
 //        maven {

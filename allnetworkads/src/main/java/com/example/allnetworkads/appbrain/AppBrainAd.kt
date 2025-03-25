@@ -1,3 +1,4 @@
+/*
 package com.example.allnetworkads.appbrain
 
 import android.app.Activity
@@ -147,7 +148,8 @@ class AppBrainAd {
         }
 
 
-        /*  fun showAd(
+        */
+/*  fun showAd(
         fragmentIdx: Int,
         viewx: View?,
         bundlex: Bundle?,
@@ -181,8 +183,10 @@ class AppBrainAd {
             }
         }
         loadAds()
-    }*/
-        /* fun loadAds(){
+    }*//*
+
+        */
+/* fun loadAds(){
         interstitialBuilder = InterstitialBuilder.create()
             .setAdId(AdId.DEFAULT)
             .setOnDoneCallback {
@@ -221,7 +225,8 @@ class AppBrainAd {
         interstitialBuilder!!.show(requireContext());
 
 
-    }*/
+    }*//*
+
 
     }
-}
+}*/

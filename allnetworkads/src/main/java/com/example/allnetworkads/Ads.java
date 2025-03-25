@@ -12,8 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.allnetworkads.admob.AdmobAds;
 import com.example.allnetworkads.adslib.Constants;
 import com.example.allnetworkads.adslib.SharedPrefUtils;
-import com.example.allnetworkads.appbrain.AppBrainAd;
-import com.example.allnetworkads.applovin.AppLovinAds;
 
 public class Ads {
 
@@ -163,10 +161,10 @@ public class Ads {
     }
 
 
-    public static void loadAppBrainAd(Context context){
-        AppBrainAd.Companion.loadAds(context);
-    }
-
+//    public static void loadAppBAd(Context context){
+//        AppBrainAd.Companion.loadAds(context);
+//    }
+/*
     public static void showAppBFragmentAd(Context context, Activity activity, boolean actOrFrag, Intent intent,
                                       boolean isFinish,
                                       View view, int fragID ){
@@ -181,5 +179,5 @@ public class Ads {
 
     public static void showAppBEmptyAd(Context context){
         AppBrainAd.Companion.showAppBEmptyAd(context);
-    }
+    }*/
 }

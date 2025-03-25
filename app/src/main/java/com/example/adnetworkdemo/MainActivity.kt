@@ -30,7 +30,7 @@ class MainActivity : BaseActivity() {
         to show applovin ads save false*/
         TestAds.getTestAds(this, ENUMS.ADMOB, packageName)
 
-        Ads.loadAppBrainAd(this)
+//        Ads.loadAppBAd(this)
 
         //LiveAds.getLiveAds(this, packageName)
 
@@ -40,9 +40,9 @@ class MainActivity : BaseActivity() {
 
         button.setOnClickListener {
             val intent = Intent(this, NextActivity::class.java)
-//            Ads.showInter(this, this, intent, false)
+            Ads.showInter(this, this, intent, false)
 
-            Ads.showAppBActivityAd(this, this, true, intent, false)
+//            Ads.showAppBActivityAd(this, this, true, intent, false)
         }
 
         btnload.setOnClickListener {

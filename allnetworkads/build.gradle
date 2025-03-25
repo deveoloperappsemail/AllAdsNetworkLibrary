@@ -1,19 +1,19 @@
 plugins {
-    id 'com.android.library'
+    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
     namespace 'com.example.allnetworkads'
-
     compileSdk 34
 
     defaultConfig {
+        applicationId "com.example.allnetworkads"
         minSdk 21
         targetSdk 34
-
+        versionCode 41
+        versionName "4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -22,93 +22,44 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = '17'
-
     }
 }
 
 dependencies {
-
-//    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.core:core-ktx:1.13.1'
-
     implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.navigation:navigation-runtime:2.5.0'
     implementation 'androidx.lifecycle:lifecycle-process:2.5.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
     implementation 'com.android.volley:volley:1.2.1'
-
-    //implementation 'com.google.android.gms:play-services-ads:21.1.0'
-    implementation 'com.google.ads.mediation:facebook:6.11.0.1'
-//    implementation("com.applovin:applovin-sdk:11.7.1")
-
-//    implementation 'com.applovin.mediation:facebook-adapter:6.11.0.5'
-
+    implementation 'com.google.ads.mediation:facebook:6.19.0.1'
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
-
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
-
-
-
-
-    //    google liftoff
-    implementation 'com.google.ads.mediation:vungle:7.3.2.0'
-
-    //    google applovin
-    implementation 'com.google.ads.mediation:applovin:12.5.0.1'
-
-    //    google meta facebook
-    implementation 'com.google.ads.mediation:facebook:6.17.0.0'
-
-    //    google inmobi
-    implementation 'com.google.ads.mediation:inmobi:10.7.4.0'
-
-    //    google mintegral
-//    implementation("com.google.ads.mediation:mintegral:16.7.61.0")
-//    implementation("com.google.ads.mediation:mintegral:16.2.61.0")
-
-
-//        google iron source
-//    implementation("com.google.ads.mediation:ironsource:8.1.0.0")
-//    implementation 'com.google.ads.mediation:ironsource:7.2.3.1'
-
-//    implementation("com.github.HBiSoft:HBRecorder:3.0.3")
-
-
-
-    /*  APPLOVIN WITH MEDIATION*/
-
+    implementation 'com.google.ads.mediation:vungle:7.4.3.1'
+    implementation 'com.google.ads.mediation:applovin:13.1.0.1'
+    implementation 'com.google.ads.mediation:facebook:6.19.0.1'
+    implementation 'com.google.ads.mediation:inmobi:10.8.2.0'
     implementation 'com.applovin:applovin-sdk:+'
     implementation 'com.applovin.mediation:vungle-adapter:+'
     implementation 'com.applovin.mediation:facebook-adapter:+'
-//    implementation 'com.applovin.mediation:mintegral-adapter:+'
     implementation 'com.applovin.mediation:moloco-adapter:+'
-//    implementation 'com.applovin.mediation:bytedance-adapter:+'
-//    implementation 'com.applovin.mediation:smaato-adapter:+'
     implementation 'com.applovin.mediation:yandex-adapter:+'
-//    implementation 'com.applovin.mediation:ironsource-adapter:+'
     implementation 'com.applovin.mediation:google-adapter:+'
-
-    //for inmobi
     implementation 'com.applovin.mediation:inmobi-adapter:+'
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
-    implementation 'com.appbrain:appbrain-sdk:+'
-
-
-
-
+//    implementation 'com.appbrain:appbrain-sdk:+'
 }
